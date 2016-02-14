@@ -1,4 +1,4 @@
-Window = function(){
+Window = function(data){
   var win = Ti.UI.createWindow({ })
 
   var my_template = {
@@ -33,16 +33,6 @@ Window = function(){
   var sections = [];
 
   var section = Ti.UI.createListSection();
-  var data = [
-    {
-      forum_name: { text: '论坛1'} ,
-      forum_description: { text: '1号论坛的描述' }
-    },
-    {
-      forum_name: { text: '论坛2'} ,
-      forum_description: { text: '2号论坛的描述' }
-    }
-  ]
   section.setItems(data);
   sections.push(section);
   list_view.setSections(sections);
