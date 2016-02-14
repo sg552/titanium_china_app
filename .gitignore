@@ -6,7 +6,6 @@ node_modules/grunt-newer/.cache/coffee/compile_multiple_files/timestamp
 dist
 src/lib/setting.coffee
 Resources/lib/setting.js
-tiapp.xml
 # 自动保存(vim)
 *.swp
 *.swo
