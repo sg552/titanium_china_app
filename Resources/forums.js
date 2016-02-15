@@ -1,5 +1,12 @@
 Window = function(data){
-  var win = Ti.UI.createWindow({ })
+  var win = Ti.UI.createWindow({
+    backgroundColor: 'white'
+  });
+
+  var navigation = Ti.App.navigation_window({
+    title: '版面列表'
+  });
+  win.add(navigation);
 
   var my_template = {
     childTemplates:[
@@ -7,27 +14,32 @@ Window = function(data){
         type: 'Ti.UI.Label',
         bindId: 'forum_name',
         properties:{
-          width: 300,
           height: 20,
-          left: 0
+          left: 0,
+          top: 0
         }
       },
       {
         type: 'Ti.UI.Label',
         bindId: 'forum_description',
         properties: {
-          width: 300,
+          //width: 300,
           height: 40,
           top: 20,
           left: 0
         }
       },
-    ]
+    ],
+    properties: {
+      height: Ti.UI.SIZE
+    }
+
   }
 
   var list_view = Ti.UI.createListView({
     templates: { 'template': my_template },
-    defaultItemTemplate: 'template'
+    defaultItemTemplate: 'template',
+    top: 60
   });
 
   var sections = [];
@@ -65,7 +77,6 @@ Window = function(data){
         data.topics = topics;
         // 把data 作为参数，传递到 topics.js 中去。
         require('topics')(data).open();
-        win.close();
       },
       onerror: function(e){
         alert('网络不好' + e);

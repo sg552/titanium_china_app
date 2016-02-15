@@ -1,5 +1,6 @@
 Titanium.UI.setBackgroundColor('#000');
 
+require('public');
 var window = Ti.UI.createWindow({});
 
 var http = Ti.Network.createHTTPClient({
@@ -18,6 +19,7 @@ var http = Ti.Network.createHTTPClient({
       });
     }
     // 把data 作为参数，传递到 forum.js 中去。
+
     require('forums')(data).open();
   },
   onerror: function(e){

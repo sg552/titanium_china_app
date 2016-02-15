@@ -3,12 +3,18 @@ Window = function(data){
     backgroundColor: 'white'
   });
 
+  var navigation = Ti.App.navigation_window({
+    title: '帖子详情',
+    back_function: function(){
+      win.close();
+    }
+  });
+  win.add(navigation);
 
   var table_data = []
   for(var i = 0; i< data.posts.length; i++){
     temp_post = data.posts[i];
     var row = Ti.UI.createTableViewRow({
-      borderColor: i == 0 ? 'red' : 'blue',
       height: Ti.UI.SIZE
     });
     var body = Ti.UI.createLabel({
@@ -16,9 +22,7 @@ Window = function(data){
       top: 40,
       text: temp_post.body,
       height: Ti.UI.SIZE,
-      borderColor: 'red',
-      borderWidth: 3
-
+      backgroundColor: '#fafafa'
     });
 
     var user = Ti.UI.createLabel({
@@ -36,12 +40,13 @@ Window = function(data){
     row.add(body);
     row.add(user);
     row.add(created_at);
-    console.info('== adding row: ' + i);
+
     table_data.push(row);
   }
 
   var table_view = Ti.UI.createTableView({
     backgroundColor: 'white',
+    top: 60,
     data: table_data
   });
 
