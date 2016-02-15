@@ -55,7 +55,7 @@ Window = function(data){
         for(i = 0; i < response.posts.length; i++){
           temp = response.posts[i];
           posts.push({
-            html_body: temp.html_body,
+            body: temp.body,
             user: temp.user,
             created_at: temp.created_at
           });

@@ -2,23 +2,25 @@ Window = function(data){
   var win = Ti.UI.createWindow({
     backgroundColor: 'white'
   });
-  var wrapper = Ti.UI.createScrollView({
-    layout: 'vertical'
-  });
+
+
+  var table_data = []
   for(var i = 0; i< data.posts.length; i++){
     temp_post = data.posts[i];
-    var row = Ti.UI.createView({
+    var row = Ti.UI.createTableViewRow({
       borderColor: i == 0 ? 'red' : 'blue',
       height: Ti.UI.SIZE
     });
-    var html_body = Ti.UI.createWebView({
+    var body = Ti.UI.createLabel({
       left: 0,
       top: 40,
-      html: temp_post.html_body,
+      text: temp_post.body,
       height: Ti.UI.SIZE,
-      borderColor: 'yellow',
+      borderColor: 'red',
       borderWidth: 3
+
     });
+
     var user = Ti.UI.createLabel({
       text: temp_post.user,
       height: 20,
@@ -31,13 +33,19 @@ Window = function(data){
       left: 100,
       top: 20
     });
-    row.add(html_body);
+    row.add(body);
     row.add(user);
     row.add(created_at);
     console.info('== adding row: ' + i);
-    wrapper.add(row);
+    table_data.push(row);
   }
-  win.add(wrapper);
+
+  var table_view = Ti.UI.createTableView({
+    backgroundColor: 'white',
+    data: table_data
+  });
+
+  win.add(table_view);
   return win;
 }
 
