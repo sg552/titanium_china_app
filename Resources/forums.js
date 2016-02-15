@@ -65,6 +65,7 @@ Window = function(data){
         data.topics = topics;
         // 把data 作为参数，传递到 topics.js 中去。
         require('topics')(data).open();
+        win.close();
       },
       onerror: function(e){
         alert('网络不好' + e);

@@ -35,15 +35,14 @@ Window = function(data){
   var section = Ti.UI.createListSection({
     headerTitle: data.forum_name
   });
-  console.info(JSON.stringify(data.topics));
   section.setItems(data.topics);
   sections.push(section);
   list_view.setSections(sections);
   win.add(list_view);
 
   list_view.addEventListener('itemclick', function(e){
-    topic_id = data[e.itemIndex].topic_id;
-    url = 'http://tidev.in/interface/posts?topic_id =' + topic_id;
+    topic_id = data.topics[e.itemIndex].topic_id;
+    url = 'http://tidev.in/interface/posts?topic_id=' + topic_id;
     var http = Ti.Network.createHTTPClient({
       onload: function(e){
         var response = JSON.parse(this.responseText);
@@ -56,15 +55,19 @@ Window = function(data){
         for(i = 0; i < response.posts.length; i++){
           temp = response.posts[i];
           posts.push({
-            html_body: { text: temp.html_body},
-            user: { text: temp.user},
-            created_at: { text: temp.created_at }
+            html_body: temp.html_body,
+            user: temp.user,
+            created_at: temp.created_at
           });
         }
         // 把data 作为参数，传递到 topics.js 中去。
+        data.posts = posts;
         require('posts')(data).open();
+        win.close();
       },
       onerror: function(e){
+        console.error("== " + e);
+        console.error(JSON.stringify(e));
         alert('网络不好' + e);
       }
     });
