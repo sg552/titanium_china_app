@@ -16,7 +16,8 @@ Window = function(data){
         properties:{
           height: 20,
           left: 0,
-          top: 0
+          top: 0,
+          color: 'black'
         }
       },
       {
@@ -26,7 +27,8 @@ Window = function(data){
           //width: 300,
           height: 40,
           top: 20,
-          left: 0
+          left: 0,
+          color: 'black'
         }
       },
     ],
@@ -39,7 +41,8 @@ Window = function(data){
   var list_view = Ti.UI.createListView({
     templates: { 'template': my_template },
     defaultItemTemplate: 'template',
-    top: 60
+    top: 60,
+    separatorColor: '#d9d9d9'
   });
 
   var sections = [];

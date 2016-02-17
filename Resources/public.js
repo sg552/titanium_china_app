@@ -15,13 +15,15 @@ Ti.App.navigation_window = function(options){
     font: {
       fontSize: 25
     },
-    color: 'black'
+    color: 'black',
+    backgroundColor: 'white'
   })
   var back = Ti.UI.createButton({
     title: "返回",
     color: 'blue',
     font: 20,
-    left: 0
+    left: 0,
+    backgroundColor: 'white'
   })
   var view = Ti.UI.createView({
     backgroundColor: 'white',

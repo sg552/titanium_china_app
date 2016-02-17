@@ -22,20 +22,23 @@ Window = function(data){
       top: 40,
       text: temp_post.body,
       height: Ti.UI.SIZE,
-      backgroundColor: '#fafafa'
+      backgroundColor: '#fafafa',
+      color: 'black'
     });
 
     var user = Ti.UI.createLabel({
       text: temp_post.user,
       height: 20,
       left: 0,
-      top: 20
+      top: 20,
+      color: 'black'
     });
     var created_at = Ti.UI.createLabel({
       text: temp_post.created_at,
       height: 20,
       left: 100,
-      top: 20
+      top: 20,
+      color: 'black'
     });
     row.add(body);
     row.add(user);
@@ -47,7 +50,8 @@ Window = function(data){
   var table_view = Ti.UI.createTableView({
     backgroundColor: 'white',
     top: 60,
-    data: table_data
+    data: table_data,
+    separatorColor: '#d9d9d9'
   });
 
   win.add(table_view);
